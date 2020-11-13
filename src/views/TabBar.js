@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import Tab from './Tab';
 
 class TabBar extends React.Component {
 
@@ -8,11 +8,13 @@ class TabBar extends React.Component {
   }
 
   render() {
+    // make tab list via data input
+    const tabList = this.props.data.map((item) => <Tab key={item.id}>{item.name}</Tab>);
+
     return (
       <div className="TabBar">
         <ul role="nav">
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/repos">Repos</Link></li>
+          {tabList}
         </ul>
       </div>
     );

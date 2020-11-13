@@ -1,10 +1,9 @@
 import React from 'react';
 import { Router, Route, hashHistory } from 'react-router';
 import App from './App';
+import TabContainer from './TabContainer';
+import MenuContainer from './MenuContainer';
 
-/**
- * 
- */
 class Minotaur extends React.Component {
 
   constructor(props) {
@@ -15,10 +14,9 @@ class Minotaur extends React.Component {
     return (
       <Router history={hashHistory}>
         <Route path="/" component={App}>
-          <Route path="/tab_name" component={TabContainer}>
-            <Route path="/menu_name" component={MenuContainer}/>
+          <Route path="tab/:id" component={TabContainer}>
+            <Route path="menu/:id" component={MenuContainer}/>
           </Route>
-          <Route path="/about" component={About}/>
         </Route>
       </Router>
     );

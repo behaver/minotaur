@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import Menu from './Menu';
 
 class MenuSider extends React.Component {
 
@@ -8,11 +8,13 @@ class MenuSider extends React.Component {
   }
 
   render() {
+    // make menu list via data input
+    const menuList = this.props.data.map((item) => <Menu key={item.id}>{item.name}</Menu>);
+
     return (
       <div className="MenuSider">
         <ul role="nav">
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/repos">Repos</Link></li>
+          {menuList}
         </ul>
       </div>
     );
