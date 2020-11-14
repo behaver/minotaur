@@ -1,6 +1,8 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import AjaxHandler from '../AjaxHandler';
 import MenuSider from './MenuSider';
-import axios from 'axios';
+import MenuContainer from './MenuContainer';
 
 class TabContainer extends React.Component {
 
@@ -24,13 +26,13 @@ class TabContainer extends React.Component {
    * @return {void} 
    */
   requestData() {
-    // current tab id from the router
-    const tabId = this.props.params.id;
+    // the current category id from the router
+    const categoryId = this.props.match.params.id;
 
-    axios.get('/category/' + tabId)
-      .then(function (response) {
+    AjaxHandler.get('/subcategories?category_id=' + categoryId)
+      .then((response) => {
         this.setState({
-          data: response.data,
+          data: response.data.data,
         });
       })
       .catch(function (error) {
@@ -41,8 +43,10 @@ class TabContainer extends React.Component {
   render() {
     return (
       <div className="TabContainer">
-        <MenuSider data={this.state.data}></MenuSider>
-        {this.props.children}
+        <MenuSider data={this.state.data} match={this.props.match}></MenuSider>
+        <Switch>
+          <Route path={this.props.match.url + '/menu/:id'} component={MenuContainer}/>
+        </Switch>
       </div>
     );
   }

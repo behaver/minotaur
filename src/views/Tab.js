@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class Tab extends React.Component {
 
@@ -9,8 +9,8 @@ class Tab extends React.Component {
 
   render() {
     return (
-      <li key={this.props.key}>
-        <Link to={'tab/' + this.props.key}>{this.props.children}</Link>
+      <li key={this.props.id}>
+        <Link to={'/tab/' + this.props.id}>{this.props.children}</Link>
       </li>
     );
   }

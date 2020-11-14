@@ -1,8 +1,8 @@
 import React from 'react';
-import { Router, Route, hashHistory } from 'react-router';
-import App from './App';
-import TabContainer from './TabContainer';
-import MenuContainer from './MenuContainer';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import App from './views/App';
+import TabContainer from './views/TabContainer';
+
 
 class Minotaur extends React.Component {
 
@@ -12,7 +12,7 @@ class Minotaur extends React.Component {
 
   render() {
     return (
-      <Router history={hashHistory}>
+      <Router>
         <Route path="/" component={App}>
           <Route path="tab/:id" component={TabContainer}>
             <Route path="menu/:id" component={MenuContainer}/>

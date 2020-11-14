@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Minotaur from './Minotaur';
+import App from './views/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Minotaur/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -9,7 +9,7 @@ class MenuSider extends React.Component {
 
   render() {
     // make menu list via data input
-    const menuList = this.props.data.map((item) => <Menu key={item.id}>{item.name}</Menu>);
+    const menuList = this.props.data.map((item) => <Menu key={item.id} id={item.id} matchUrl={this.props.match.url}>{item.name}</Menu>);
 
     return (
       <div className="MenuSider">

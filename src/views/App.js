@@ -1,6 +1,8 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import AjaxHandler from '../AjaxHandler';
 import TabBar from './TabBar';
-import axios from 'axios';
+import TabContainer from './TabContainer';
 
 class App extends React.Component {
 
@@ -24,10 +26,10 @@ class App extends React.Component {
    * @return {void} 
    */
   requestData() {
-    axios.get('/categories')
-      .then(function (response) {
+    AjaxHandler.get('/categories')
+      .then((response) => {
         this.setState({
-          data: response.data,
+          data: response.data.data,
         });
       })
       .catch(function (error) {
@@ -36,11 +38,16 @@ class App extends React.Component {
   }
   
   render() {
+
     return (
-      <div className="App">
-        <TabBar data={this.state.data}></TabBar>
-        {this.props.children}
-      </div>
+      <Router>
+        <div className="App">
+          <TabBar data={this.state.data}></TabBar>
+          <Switch>
+            <Route path='/tab/:id' component={TabContainer}/>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

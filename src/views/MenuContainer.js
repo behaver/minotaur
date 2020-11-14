@@ -1,6 +1,6 @@
 import React from 'react';
 import Section from './Section';
-import axios from 'axios';
+import AjaxHandler from '../AjaxHandler';
 
 class MenuContainer extends React.Component {
 
@@ -24,13 +24,13 @@ class MenuContainer extends React.Component {
    * @return {void} 
    */
   requestData() {
-    // current menu id from the router
-    const menuId = this.props.params.id;
+    // the current menu id from the router
+    const menuId = this.props.match.params.id;
 
-    axios.get('/subcategory/' + menuId)
-      .then(function (response) {
+    AjaxHandler.get('/sections?subcategory_id=' + menuId)
+      .then((response) => {
         this.setState({
-          data: response.data,
+          data: response.data.data,
         });
       })
       .catch(function (error) {
@@ -40,7 +40,7 @@ class MenuContainer extends React.Component {
   
   render() {
     // make section JSX list via data source
-    let sectionList = this.state.data.map((item) => <Section key={item.id} data={item.data} />);
+    let sectionList = this.state.data.map((item) => <Section key={item.id} id={item.id} data={item.data} />);
 
     return (
       <div className="MenuContainer">

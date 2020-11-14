@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class Menu extends React.Component {
 
@@ -9,8 +9,8 @@ class Menu extends React.Component {
 
   render() {
     return (
-      <li key={this.props.key}>
-        <Link to={'menu/' + this.props.key}>{this.props.children}</Link>
+      <li key={this.props.id}>
+        <Link to={ this.props.matchUrl + '/menu/' + this.props.id } replace>{this.props.children}</Link>
       </li>
     );
   }

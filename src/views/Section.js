@@ -1,7 +1,7 @@
 import React from 'react';
 import Folder from './Folder';
 import Media from './Media';
-import axios from 'axios';
+import AjaxHandler from '../AjaxHandler';
 
 class Section extends React.Component {
 
@@ -10,6 +10,8 @@ class Section extends React.Component {
 
     this.state = {
       data: [], // for saving units data(include folders and medias) in the current section
+      pageIndex: 1, // the page index for requesting
+      scopeId: 0, // the scope id for requesting
     }
 
     // bind this on methods
@@ -25,13 +27,19 @@ class Section extends React.Component {
    * @return {void} 
    */
   requestData() {
-    // the current section id from the router
-    const sectionId = this.props.params.id;
+    // the current section id
+    const sectionId = this.props.id;
 
-    axios.get('/section/' + sectionId)
-      .then(function (response) {
+    AjaxHandler.get('/subjects', {
+        params: {
+          'section_id': sectionId,
+          'scope_id': this.state.scopeId,
+          'page': this.state.pageIndex,
+        }
+      })
+      .then((response) => {
         this.setState({
-          data: response.data,
+          data: response.data.data,
         });
       })
       .catch(function (error) {
@@ -39,12 +47,21 @@ class Section extends React.Component {
       });
   }
 
+  enterFreshScope() {
+    // change the current scopeId to the event-triggered SUnit key
+    this.setState({
+      scopeId: this.props.key,
+    });
+
+    this.requestData();
+  }
+
   render() {
     // make SUnit list via data source
     const unitList = this.state.data.map((item) => {
-      if (item.type == 'folder') 
-        return <Folder key={item.id} name={item.name}/>;
-      else if (item.type == 'media') 
+      if (item.type === 'scope') 
+        return <Folder key={item.id} name={item.name} onDoubleClick={this.enterFreshScope.bind(this)}/>;
+      else
         return <Media key={item.id} name={item.name}/>;
     });
 

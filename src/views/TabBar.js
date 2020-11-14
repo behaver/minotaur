@@ -9,7 +9,7 @@ class TabBar extends React.Component {
 
   render() {
     // make tab list via data input
-    const tabList = this.props.data.map((item) => <Tab key={item.id}>{item.name}</Tab>);
+    const tabList = this.props.data.map((item) => <Tab key={item.id} id={item.id}>{item.name}</Tab>);
 
     return (
       <div className="TabBar">

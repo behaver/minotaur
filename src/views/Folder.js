@@ -9,7 +9,7 @@ class Folder extends SUnit {
   
   render() {
     return (
-      <div className="Folder">
+      <div className="Folder" onDoubleClick={this.props.onDoubleClick}>
         <span>{ this.props.name }</span>
       </div>
     );
