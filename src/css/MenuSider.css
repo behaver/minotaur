@@ -1,11 +1,13 @@
 .MenuSider {
+  width: 200px;
+
   /* flex-box */
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
 
   /* flex-item */
-  flex-grow: 1;
+  /*flex-grow: 1;*/
   flex-shrink: 0;
 
   overflow-y: auto;

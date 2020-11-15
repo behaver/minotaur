@@ -9,3 +9,11 @@
   max-height: 50vh;
   overflow-y: auto;
 }
+
+.Section>.LoadMore {
+  border: 0;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+}

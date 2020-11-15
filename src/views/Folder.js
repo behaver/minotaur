@@ -11,7 +11,7 @@ class Folder extends SUnit {
   
   render() {
     return (
-      <div className="SUnit Folder" data-id={this.props.id} onDoubleClick={this.props.onDoubleClick}>
+      <div className="SUnit Folder" dataid={this.props.id} onDoubleClick={this.props.onDoubleClick}>
         <span>{ this.props.name }</span>
       </div>
     );
