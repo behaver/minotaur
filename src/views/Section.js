@@ -22,6 +22,12 @@ class Section extends React.Component {
     this.requestData();
   }
 
+  // componentDidUpdate() {
+  //   if (this.props.id !== this.state.scopeId) {
+  //     this.requestData();
+  //   }
+  // }
+
   /**
    * request units data which belong to the current section, asynchronously 
    * @return {void} 
@@ -48,9 +54,9 @@ class Section extends React.Component {
   }
 
   enterFreshScope() {
-    // change the current scopeId to the event-triggered SUnit key
+    // change the current scopeId to the event-triggered SUnit id
     this.setState({
-      scopeId: this.props.key,
+      scopeId: this.props.id,
     });
 
     this.requestData();
@@ -60,9 +66,9 @@ class Section extends React.Component {
     // make SUnit list via data source
     const unitList = this.state.data.map((item) => {
       if (item.type === 'scope') 
-        return <Folder key={item.id} name={item.name} onDoubleClick={this.enterFreshScope.bind(this)}/>;
+        return <Folder key={item.id} id={item.id} name={item.name} onDoubleClick={this.enterFreshScope.bind(this)}/>;
       else
-        return <Media key={item.id} name={item.name}/>;
+        return <Media key={item.id} id={item.id} name={item.name}/>;
     });
 
 

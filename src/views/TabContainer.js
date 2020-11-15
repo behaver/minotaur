@@ -10,6 +10,7 @@ class TabContainer extends React.Component {
     super(props);
 
     this.state = {
+      tabId: 0, // the current tab id
       data: [], // for saving menus data
     }
 
@@ -17,8 +18,14 @@ class TabContainer extends React.Component {
     this.requestData = this.requestData.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.requestData();
+  }
+
+  componentDidUpdate() {
+    if (this.props.match.params.id !== this.state.tabId) {
+      this.requestData();
+    }
   }
 
   /**
@@ -32,6 +39,7 @@ class TabContainer extends React.Component {
     AjaxHandler.get('/subcategories?category_id=' + categoryId)
       .then((response) => {
         this.setState({
+          tabId: this.props.match.params.id,
           data: response.data.data,
         });
       })

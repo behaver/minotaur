@@ -8,6 +8,7 @@ class MenuContainer extends React.Component {
     super(props);
 
     this.state = {
+      menuId: 0, // the current menu id
       data: [], // for saving sections data
     }
 
@@ -17,6 +18,12 @@ class MenuContainer extends React.Component {
 
   componentDidMount(){
     this.requestData();
+  }
+
+  componentDidUpdate() {
+    if (this.props.match.params.id !== this.state.menuId) {
+      this.requestData();
+    }
   }
 
   /**
@@ -30,6 +37,7 @@ class MenuContainer extends React.Component {
     AjaxHandler.get('/sections?subcategory_id=' + menuId)
       .then((response) => {
         this.setState({
+          menuId: this.props.match.params.id,
           data: response.data.data,
         });
       })
