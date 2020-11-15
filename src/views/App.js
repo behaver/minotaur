@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AjaxHandler from '../AjaxHandler';
 import TabBar from './TabBar';
 import TabContainer from './TabContainer';
+import '../css/App.css';
 
 class App extends React.Component {
 

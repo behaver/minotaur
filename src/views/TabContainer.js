@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import AjaxHandler from '../AjaxHandler';
 import MenuSider from './MenuSider';
 import MenuContainer from './MenuContainer';
+import '../css/TabContainer.css';
 
 class TabContainer extends React.Component {
 

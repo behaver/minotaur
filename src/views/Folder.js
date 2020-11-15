@@ -1,5 +1,7 @@
 import React from 'react';
 import SUnit from './SUnit';
+import '../css/SUnit.css';
+import '../css/Folder.css';
 
 class Folder extends SUnit {
 
@@ -9,7 +11,7 @@ class Folder extends SUnit {
   
   render() {
     return (
-      <div className="Folder" data-id={this.props.id} onDoubleClick={this.props.onDoubleClick}>
+      <div className="SUnit Folder" data-id={this.props.id} onDoubleClick={this.props.onDoubleClick}>
         <span>{ this.props.name }</span>
       </div>
     );

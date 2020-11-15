@@ -1,0 +1,11 @@
+.Section {
+  /* flex-box */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+
+  min-height: 140px;
+  max-height: 50vh;
+  overflow-y: auto;
+}

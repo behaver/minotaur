@@ -1,5 +1,7 @@
 import React from 'react';
 import SUnit from './SUnit';
+import '../css/SUnit.css';
+import '../css/Media.css';
 
 class Media extends SUnit {
 
@@ -9,7 +11,7 @@ class Media extends SUnit {
   
   render() {
     return (
-      <div className="Media" data-id={this.props.id}>
+      <div className="SUnit Media" data-id={this.props.id}>
         <span>{ this.props.name }</span>
       </div>
     );

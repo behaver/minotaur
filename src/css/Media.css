@@ -1,0 +1,9 @@
+.Media {
+  width: 100px;
+  height: 100px;
+  -moz-border-radius: 60px;
+  -webkit-border-radius: 60px;
+  border-radius: 60px;
+  text-align: center;
+  line-height: 100px;
+}

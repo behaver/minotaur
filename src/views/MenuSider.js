@@ -1,5 +1,6 @@
 import React from 'react';
 import Menu from './Menu';
+import '../css/MenuSider.css';
 
 class MenuSider extends React.Component {
 

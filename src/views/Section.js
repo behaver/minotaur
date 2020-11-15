@@ -2,6 +2,7 @@ import React from 'react';
 import Folder from './Folder';
 import Media from './Media';
 import AjaxHandler from '../AjaxHandler';
+import '../css/Section.css';
 
 class Section extends React.Component {
 
