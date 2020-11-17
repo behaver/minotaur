@@ -88,9 +88,9 @@ class Section extends React.Component {
     // make SUnit list via data source
     const unitList = this.state.data.map((item) => {
       if (item.type === 'scope') 
-        return <Folder key={item.id} id={item.id} name={item.name} onDoubleClick={this.enterFreshScope.bind(this, item.id)}/>;
+        return <Folder key={item.id} name={item.name} onDoubleClick={this.enterFreshScope.bind(this, item.id)}/>;
       else
-        return <Media key={item.id} id={item.id} name={item.name}/>;
+        return <Media key={item.id} name={item.name}/>;
     });
 
 

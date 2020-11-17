@@ -41,7 +41,7 @@ class App extends React.Component {
   render() {
 
     return (
-      <Router>
+      <Router forceRefresh={true} >
         <div className="App">
           <TabBar data={this.state.data}></TabBar>
           <Switch>

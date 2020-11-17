@@ -11,7 +11,7 @@ class Media extends SUnit {
   
   render() {
     return (
-      <div className="SUnit Media" data-id={this.props.id}>
+      <div className="SUnit Media">
         <span>{ this.props.name }</span>
       </div>
     );
